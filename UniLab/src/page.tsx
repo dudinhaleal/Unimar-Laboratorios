@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import type React from "react";
+import type React from "react"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 import {
   Search,
   MapPin,
@@ -22,17 +22,11 @@ import {
   Phone,
   Mail,
   Home,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+} from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import {
   Dialog,
   DialogContent,
@@ -40,16 +34,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+} from "@/components/ui/dialog"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 
 // Mock data for laboratories
 const laboratories = [
@@ -80,8 +68,7 @@ const laboratories = [
     status: "open",
     course: "Engenharia",
     type: "Robótica",
-    description:
-      "Espaço dedicado ao desenvolvimento de projetos de robótica e automação industrial.",
+    description: "Espaço dedicado ao desenvolvimento de projetos de robótica e automação industrial.",
     equipment: [
       { name: "Kits Arduino", icon: Cpu, quantity: 25 },
       { name: "Impressoras 3D", icon: Printer, quantity: 5 },
@@ -99,8 +86,7 @@ const laboratories = [
     status: "open",
     course: "Engenharia Elétrica",
     type: "Eletrônica",
-    description:
-      "Laboratório para desenvolvimento e teste de circuitos eletrônicos e sistemas embarcados.",
+    description: "Laboratório para desenvolvimento e teste de circuitos eletrônicos e sistemas embarcados.",
     equipment: [
       { name: "Osciloscópios", icon: Zap, quantity: 15 },
       { name: "Multímetros", icon: Wrench, quantity: 30 },
@@ -110,7 +96,7 @@ const laboratories = [
     responsible: "Prof. Dr. Roberto Lima",
     images: ["/electronics-lab.jpg"],
   },
-];
+]
 
 const specialResources = [
   {
@@ -131,17 +117,15 @@ const specialResources = [
     icon: Cpu,
     color: "bg-secondary",
   },
-];
+]
 
 export default function UnimarLabsCatalog() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCourse, setSelectedCourse] = useState("all");
-  const [selectedType, setSelectedType] = useState("all");
-  const [selectedLab, setSelectedLab] = useState<
-    (typeof laboratories)[0] | null
-  >(null);
-  const [showBookingForm, setShowBookingForm] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("")
+  const [selectedCourse, setSelectedCourse] = useState("all")
+  const [selectedType, setSelectedType] = useState("all")
+  const [selectedLab, setSelectedLab] = useState<(typeof laboratories)[0] | null>(null)
+  const [showBookingForm, setShowBookingForm] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [bookingData, setBookingData] = useState({
     name: "",
     course: "",
@@ -149,29 +133,28 @@ export default function UnimarLabsCatalog() {
     date: "",
     time: "",
     purpose: "",
-  });
-  const [bookingConfirmed, setBookingConfirmed] = useState(false);
+  })
+  const [bookingConfirmed, setBookingConfirmed] = useState(false)
 
   const filteredLabs = laboratories.filter((lab) => {
     const matchesSearch =
       lab.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      lab.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCourse =
-      selectedCourse === "all" || lab.course === selectedCourse;
-    const matchesType = selectedType === "all" || lab.type === selectedType;
+      lab.description.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesCourse = selectedCourse === "all" || lab.course === selectedCourse
+    const matchesType = selectedType === "all" || lab.type === selectedType
 
-    return matchesSearch && matchesCourse && matchesType;
-  });
+    return matchesSearch && matchesCourse && matchesType
+  })
 
-  const courses = ["all", ...new Set(laboratories.map((lab) => lab.course))];
-  const types = ["all", ...new Set(laboratories.map((lab) => lab.type))];
+  const courses = ["all", ...new Set(laboratories.map((lab) => lab.course))]
+  const types = ["all", ...new Set(laboratories.map((lab) => lab.type))]
 
   const handleBookingSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setBookingConfirmed(true);
+    e.preventDefault()
+    setBookingConfirmed(true)
     setTimeout(() => {
-      setShowBookingForm(false);
-      setBookingConfirmed(false);
+      setShowBookingForm(false)
+      setBookingConfirmed(false)
       setBookingData({
         name: "",
         course: "",
@@ -179,37 +162,37 @@ export default function UnimarLabsCatalog() {
         date: "",
         time: "",
         purpose: "",
-      });
-    }, 3000);
-  };
+      })
+    }, 3000)
+  }
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
+    const element = document.getElementById(sectionId)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth" })
     }
-    setMobileMenuOpen(false);
-  };
+    setMobileMenuOpen(false)
+  }
 
   useEffect(() => {
     // Load Mapbox GL JS script
-    const script = document.createElement("script");
-    script.src = "https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js";
-    script.async = true;
-    document.head.appendChild(script);
+    const script = document.createElement("script")
+    script.src = "https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"
+    script.async = true
+    document.head.appendChild(script)
 
     // Load Mapbox CSS
-    const link = document.createElement("link");
-    link.href = "https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css";
-    link.rel = "stylesheet";
-    document.head.appendChild(link);
+    const link = document.createElement("link")
+    link.href = "https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
+    link.rel = "stylesheet"
+    document.head.appendChild(link)
 
     script.onload = () => {
       // Initialize map after script loads
       if (typeof window !== "undefined" && (window as any).mapboxgl) {
-        const mapboxgl = (window as any).mapboxgl;
+        const mapboxgl = (window as any).mapboxgl
         mapboxgl.accessToken =
-          "pk.eyJ1IjoiY2F1ZWgxcDNyIiwiYSI6ImNsbG8zMDBubDA1bXYzZW4xY3J1aW56cjkifQ.BW8sXRQtfPcAY6zkrsVnRg";
+          "pk.eyJ1IjoiY2F1ZWgxcDNyIiwiYSI6ImNsbG8zMDBubDA1bXYzZW4xY3J1aW56cjkifQ.BW8sXRQtfPcAY6zkrsVnRg"
 
         const map = new mapboxgl.Map({
           container: "unimar-map",
@@ -217,14 +200,14 @@ export default function UnimarLabsCatalog() {
           center: [-49.96455, -22.23669], // Coordenadas de Marília, SP
           zoom: 16,
           interactive: true,
-        });
+        })
 
         // Add main campus marker
         const mainMarker = new mapboxgl.Marker({
           color: "#004AAD",
         })
           .setLngLat([-49.96455, -22.23669])
-          .addTo(map);
+          .addTo(map)
 
         // Add popup to main marker
         const mainPopup = new mapboxgl.Popup({
@@ -235,28 +218,16 @@ export default function UnimarLabsCatalog() {
             <p style="margin: 0; color: #666; font-size: 14px;">Universidade de Marília</p>
             <p style="margin: 4px 0 0 0; color: #666; font-size: 12px;">Localização aproximada dos laboratórios</p>
           </div>
-        `);
+        `)
 
-        mainMarker.setPopup(mainPopup);
+        mainMarker.setPopup(mainPopup)
 
         // Add laboratory markers
         const labLocations = [
-          {
-            name: "Lab. Informática I",
-            coords: [-49.96465, -22.23659],
-            block: "Bloco A",
-          },
-          {
-            name: "Lab. Robótica",
-            coords: [-49.96445, -22.23679],
-            block: "Bloco C",
-          },
-          {
-            name: "Lab. Eletrônica",
-            coords: [-49.96475, -22.23669],
-            block: "Bloco E",
-          },
-        ];
+          { name: "Lab. Informática I", coords: [-49.96465, -22.23659], block: "Bloco A" },
+          { name: "Lab. Robótica", coords: [-49.96445, -22.23679], block: "Bloco C" },
+          { name: "Lab. Eletrônica", coords: [-49.96475, -22.23669], block: "Bloco E" },
+        ]
 
         labLocations.forEach((lab) => {
           const labMarker = new mapboxgl.Marker({
@@ -264,7 +235,7 @@ export default function UnimarLabsCatalog() {
             scale: 0.8,
           })
             .setLngLat(lab.coords)
-            .addTo(map);
+            .addTo(map)
 
           const labPopup = new mapboxgl.Popup({
             offset: 25,
@@ -273,22 +244,22 @@ export default function UnimarLabsCatalog() {
               <h4 style="margin: 0 0 4px 0; color: #0084DC; font-size: 14px; font-weight: 600;">${lab.name}</h4>
               <p style="margin: 0; color: #666; font-size: 12px;">${lab.block}</p>
             </div>
-          `);
+          `)
 
-          labMarker.setPopup(labPopup);
-        });
+          labMarker.setPopup(labPopup)
+        })
 
         // Add navigation controls
-        map.addControl(new mapboxgl.NavigationControl(), "top-right");
+        map.addControl(new mapboxgl.NavigationControl(), "top-right")
       }
-    };
+    }
 
     return () => {
       // Cleanup
-      document.head.removeChild(script);
-      document.head.removeChild(link);
-    };
-  }, []);
+      document.head.removeChild(script)
+      document.head.removeChild(link)
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-background">
@@ -296,11 +267,7 @@ export default function UnimarLabsCatalog() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <img
-                src="/unimar-logo.png"
-                alt="UNIMAR Logo"
-                className="h-10 w-auto object-contain"
-              />
+              <img src="/unimar-logo.png" alt="UNIMAR Logo" className="h-10 w-auto object-contain" />
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
@@ -336,11 +303,7 @@ export default function UnimarLabsCatalog() {
 
             {/* Desktop Action Buttons */}
             <div className="hidden md:flex items-center space-x-3">
-              <Button
-                variant="outline"
-                size="sm"
-                className="bg-white/10 border-white/20 text-white hover:bg-white/20"
-              >
+              <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
                 <Phone className="h-4 w-4 mr-2" />
                 Contato
               </Button>
@@ -362,11 +325,7 @@ export default function UnimarLabsCatalog() {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="text-white hover:bg-white/10"
               >
-                {mobileMenuOpen ? (
-                  <X className="h-5 w-5" />
-                ) : (
-                  <Menu className="h-5 w-5" />
-                )}
+                {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
             </div>
           </div>
@@ -422,8 +381,8 @@ export default function UnimarLabsCatalog() {
                   </Button>
                   <Button
                     onClick={() => {
-                      setShowBookingForm(true);
-                      setMobileMenuOpen(false);
+                      setShowBookingForm(true)
+                      setMobileMenuOpen(false)
                     }}
                     size="sm"
                     className="flex-1 bg-white text-primary hover:bg-white/90"
@@ -446,16 +405,13 @@ export default function UnimarLabsCatalog() {
                 <Beaker className="h-8 w-8 text-white" />
               </div>
               <div className="text-left">
-                <h1 className="text-4xl md:text-5xl font-bold mb-2 text-balance">
-                  Catálogo Interativo
-                </h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-2 text-balance">Catálogo Interativo</h1>
                 <p className="text-xl text-white/90">de Laboratórios UNIMAR</p>
               </div>
             </div>
             <p className="text-xl text-white/90 max-w-3xl mx-auto text-pretty leading-relaxed">
-              Explore os laboratórios de ponta da Universidade de Marília e
-              descubra recursos tecnológicos avançados para impulsionar sua
-              formação acadêmica e pesquisa científica
+              Explore os laboratórios de ponta da Universidade de Marília e descubra recursos tecnológicos avançados
+              para impulsionar sua formação acadêmica e pesquisa científica
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Button
@@ -520,10 +476,7 @@ export default function UnimarLabsCatalog() {
               </SelectContent>
             </Select>
 
-            <Button
-              onClick={() => setShowBookingForm(true)}
-              className="w-full md:w-auto"
-            >
+            <Button onClick={() => setShowBookingForm(true)} className="w-full md:w-auto">
               <Calendar className="mr-2 h-4 w-4" />
               Agendar Visita
             </Button>
@@ -536,7 +489,7 @@ export default function UnimarLabsCatalog() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredLabs.map((lab) => {
-              const IconComponent = lab.icon;
+              const IconComponent = lab.icon
               return (
                 <Dialog key={lab.id}>
                   <DialogTrigger asChild>
@@ -548,9 +501,7 @@ export default function UnimarLabsCatalog() {
                               <IconComponent className="h-6 w-6 text-primary" />
                             </div>
                             <div>
-                              <CardTitle className="text-lg">
-                                {lab.name}
-                              </CardTitle>
+                              <CardTitle className="text-lg">{lab.name}</CardTitle>
                               <CardDescription className="flex items-center gap-1 mt-1">
                                 <MapPin className="h-3 w-3" />
                                 {lab.location}
@@ -558,14 +509,8 @@ export default function UnimarLabsCatalog() {
                             </div>
                           </div>
                           <Badge
-                            variant={
-                              lab.status === "open" ? "default" : "secondary"
-                            }
-                            className={
-                              lab.status === "open"
-                                ? "bg-green-500"
-                                : "bg-red-500"
-                            }
+                            variant={lab.status === "open" ? "default" : "secondary"}
+                            className={lab.status === "open" ? "bg-green-500" : "bg-red-500"}
                           >
                             {lab.status === "open" ? "Aberto" : "Fechado"}
                           </Badge>
@@ -606,34 +551,23 @@ export default function UnimarLabsCatalog() {
 
                       <div>
                         <h4 className="font-semibold mb-2">Descrição</h4>
-                        <p className="text-muted-foreground text-pretty">
-                          {lab.description}
-                        </p>
+                        <p className="text-muted-foreground text-pretty">{lab.description}</p>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold mb-3">
-                          Equipamentos Disponíveis
-                        </h4>
+                        <h4 className="font-semibold mb-3">Equipamentos Disponíveis</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                           {lab.equipment.map((equipment, index) => {
-                            const EquipIcon = equipment.icon;
+                            const EquipIcon = equipment.icon
                             return (
-                              <div
-                                key={index}
-                                className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg"
-                              >
+                              <div key={index} className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
                                 <EquipIcon className="h-5 w-5 text-primary" />
                                 <div>
-                                  <p className="font-medium">
-                                    {equipment.name}
-                                  </p>
-                                  <p className="text-sm text-muted-foreground">
-                                    Qtd: {equipment.quantity}
-                                  </p>
+                                  <p className="font-medium">{equipment.name}</p>
+                                  <p className="text-sm text-muted-foreground">Qtd: {equipment.quantity}</p>
                                 </div>
                               </div>
-                            );
+                            )
                           })}
                         </div>
                       </div>
@@ -644,9 +578,7 @@ export default function UnimarLabsCatalog() {
                             <Clock className="h-4 w-4" />
                             Horário de Funcionamento
                           </h4>
-                          <p className="text-muted-foreground">
-                            {lab.schedule}
-                          </p>
+                          <p className="text-muted-foreground">{lab.schedule}</p>
                         </div>
 
                         <div>
@@ -654,15 +586,13 @@ export default function UnimarLabsCatalog() {
                             <User className="h-4 w-4" />
                             Responsável
                           </h4>
-                          <p className="text-muted-foreground">
-                            {lab.responsible}
-                          </p>
+                          <p className="text-muted-foreground">{lab.responsible}</p>
                         </div>
                       </div>
                     </div>
                   </DialogContent>
                 </Dialog>
-              );
+              )
             })}
           </div>
         </div>
@@ -671,32 +601,21 @@ export default function UnimarLabsCatalog() {
       {/* Special Resources */}
       <section id="resources" className="py-12 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-balance">
-            Recursos Especiais
-          </h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-balance">Recursos Especiais</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {specialResources.map((resource, index) => {
-              const IconComponent = resource.icon;
+              const IconComponent = resource.icon
               return (
-                <Card
-                  key={index}
-                  className="text-center hover:shadow-lg transition-shadow"
-                >
+                <Card key={index} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
-                    <div
-                      className={`inline-flex p-4 rounded-full ${resource.color} mb-4`}
-                    >
+                    <div className={`inline-flex p-4 rounded-full ${resource.color} mb-4`}>
                       <IconComponent className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className="font-semibold mb-2 text-balance">
-                      {resource.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground text-pretty">
-                      {resource.description}
-                    </p>
+                    <h3 className="font-semibold mb-2 text-balance">{resource.title}</h3>
+                    <p className="text-sm text-muted-foreground text-pretty">{resource.description}</p>
                   </CardContent>
                 </Card>
-              );
+              )
             })}
           </div>
         </div>
@@ -705,9 +624,7 @@ export default function UnimarLabsCatalog() {
       {/* Interactive Map Section */}
       <section id="map" className="py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-balance">
-            Localização dos Laboratórios
-          </h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-balance">Localização dos Laboratórios</h2>
 
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             {/* Map Header */}
@@ -716,12 +633,8 @@ export default function UnimarLabsCatalog() {
                 <div className="flex items-center gap-3">
                   <MapPin className="h-6 w-6" />
                   <div>
-                    <h3 className="text-lg font-semibold">
-                      Mapa Interativo do Campus
-                    </h3>
-                    <p className="text-white/90 text-sm">
-                      Explore a localização dos laboratórios
-                    </p>
+                    <h3 className="text-lg font-semibold">Mapa Interativo do Campus</h3>
+                    <p className="text-white/90 text-sm">Explore a localização dos laboratórios</p>
                   </div>
                 </div>
                 <div className="hidden md:flex items-center gap-4 text-sm">
@@ -738,11 +651,7 @@ export default function UnimarLabsCatalog() {
             </div>
 
             {/* Interactive Map Container */}
-            <div
-              id="unimar-map"
-              className="w-full h-96 md:h-[500px]"
-              style={{ minHeight: "400px" }}
-            />
+            <div id="unimar-map" className="w-full h-96 md:h-[500px]" style={{ minHeight: "400px" }} />
 
             {/* Map Footer with Instructions */}
             <div className="bg-[#EFEFEF] p-4">
@@ -751,9 +660,7 @@ export default function UnimarLabsCatalog() {
                   <div className="w-5 h-5 bg-[#004AAD] rounded-full flex items-center justify-center">
                     <span className="text-white text-xs">i</span>
                   </div>
-                  <span>
-                    Clique nos marcadores para ver informações detalhadas
-                  </span>
+                  <span>Clique nos marcadores para ver informações detalhadas</span>
                 </div>
                 <div className="flex items-center gap-4 text-sm text-[#283146]">
                   <span>📍 UNIMAR - Av. Hygino Muzzi Filho, 1001</span>
@@ -782,9 +689,7 @@ export default function UnimarLabsCatalog() {
                 <div className="w-12 h-12 bg-[#0084DC] rounded-full flex items-center justify-center mx-auto mb-4">
                   <Clock className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="font-semibold mb-2">
-                  Horários de Funcionamento
-                </h4>
+                <h4 className="font-semibold mb-2">Horários de Funcionamento</h4>
                 <p className="text-sm text-muted-foreground text-pretty">
                   Consulte os horários de cada laboratório antes da sua visita
                 </p>
@@ -811,34 +716,19 @@ export default function UnimarLabsCatalog() {
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle>Agendar Visita ao Laboratório</DialogTitle>
-            <DialogDescription>
-              Preencha os dados para solicitar uma visita aos laboratórios
-            </DialogDescription>
+            <DialogDescription>Preencha os dados para solicitar uma visita aos laboratórios</DialogDescription>
           </DialogHeader>
 
           {bookingConfirmed ? (
             <div className="text-center py-8">
               <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg
-                  className="w-8 h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold mb-2">
-                Agendamento Confirmado!
-              </h3>
+              <h3 className="text-lg font-semibold mb-2">Agendamento Confirmado!</h3>
               <p className="text-muted-foreground text-pretty">
-                Sua solicitação foi enviada. Você receberá uma confirmação em
-                breve.
+                Sua solicitação foi enviada. Você receberá uma confirmação em breve.
               </p>
             </div>
           ) : (
@@ -848,9 +738,7 @@ export default function UnimarLabsCatalog() {
                 <Input
                   id="name"
                   value={bookingData.name}
-                  onChange={(e) =>
-                    setBookingData({ ...bookingData, name: e.target.value })
-                  }
+                  onChange={(e) => setBookingData({ ...bookingData, name: e.target.value })}
                   required
                 />
               </div>
@@ -859,9 +747,7 @@ export default function UnimarLabsCatalog() {
                 <Label htmlFor="course">Curso</Label>
                 <Select
                   value={bookingData.course}
-                  onValueChange={(value) =>
-                    setBookingData({ ...bookingData, course: value })
-                  }
+                  onValueChange={(value) => setBookingData({ ...bookingData, course: value })}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Selecione seu curso" />
@@ -880,9 +766,7 @@ export default function UnimarLabsCatalog() {
                 <Label htmlFor="laboratory">Laboratório</Label>
                 <Select
                   value={bookingData.laboratory}
-                  onValueChange={(value) =>
-                    setBookingData({ ...bookingData, laboratory: value })
-                  }
+                  onValueChange={(value) => setBookingData({ ...bookingData, laboratory: value })}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Selecione o laboratório" />
@@ -904,9 +788,7 @@ export default function UnimarLabsCatalog() {
                     id="date"
                     type="date"
                     value={bookingData.date}
-                    onChange={(e) =>
-                      setBookingData({ ...bookingData, date: e.target.value })
-                    }
+                    onChange={(e) => setBookingData({ ...bookingData, date: e.target.value })}
                     required
                   />
                 </div>
@@ -917,9 +799,7 @@ export default function UnimarLabsCatalog() {
                     id="time"
                     type="time"
                     value={bookingData.time}
-                    onChange={(e) =>
-                      setBookingData({ ...bookingData, time: e.target.value })
-                    }
+                    onChange={(e) => setBookingData({ ...bookingData, time: e.target.value })}
                     required
                   />
                 </div>
@@ -931,9 +811,7 @@ export default function UnimarLabsCatalog() {
                   id="purpose"
                   placeholder="Descreva o motivo da sua visita..."
                   value={bookingData.purpose}
-                  onChange={(e) =>
-                    setBookingData({ ...bookingData, purpose: e.target.value })
-                  }
+                  onChange={(e) => setBookingData({ ...bookingData, purpose: e.target.value })}
                   rows={3}
                 />
               </div>
@@ -957,14 +835,11 @@ export default function UnimarLabsCatalog() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">UNIMAR</h3>
-                  <p className="text-white/80 text-sm">
-                    Universidade de Marília
-                  </p>
+                  <p className="text-white/80 text-sm">Universidade de Marília</p>
                 </div>
               </div>
               <p className="text-white/80 text-pretty">
-                Conectando estudantes aos recursos tecnológicos de ponta para
-                uma formação acadêmica de excelência.
+                Conectando estudantes aos recursos tecnológicos de ponta para uma formação acadêmica de excelência.
               </p>
             </div>
 
@@ -1020,13 +895,10 @@ export default function UnimarLabsCatalog() {
           </div>
 
           <div className="border-t border-white/20 mt-8 pt-6 text-center">
-            <p className="text-white/80">
-              © 2024 Universidade de Marília - UNIMAR. Todos os direitos
-              reservados.
-            </p>
+            <p className="text-white/80">© 2024 Universidade de Marília - UNIMAR. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
     </div>
-  );
+  )
 }
