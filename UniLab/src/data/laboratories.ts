@@ -29,7 +29,7 @@ export const laboratories: Laboratory[] = [
     ],
     schedule: "Segunda a Sexta: 8h às 22h",
     responsible: "Prof. Dr. João Silva",
-    images: ["/unimarlab1.jpg"],
+    images: ["UniLab/src/assets/images/unimarlab1.jpg"],
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ export const laboratories: Laboratory[] = [
     ],
     schedule: "Segunda a Sábado: 8h às 20h",
     responsible: "Prof. Dr. Carlos Oliveira",
-    images: ["/robotics-lab.jpg"],
+    images: ["UniLab/src/assets/images/unimarlab2.jpeg"],
   },
   {
     id: 4,
