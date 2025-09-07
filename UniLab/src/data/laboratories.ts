@@ -29,7 +29,7 @@ export const laboratories: Laboratory[] = [
     ],
     schedule: "Segunda a Sexta: 8h às 22h",
     responsible: "Prof. Dr. João Silva",
-    images: ["UniLab/src/assets/images/unimarlab1.jpg"],
+    images: ["/unimarlab1.jpg"],
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ export const laboratories: Laboratory[] = [
     ],
     schedule: "Segunda a Sábado: 8h às 20h",
     responsible: "Prof. Dr. Carlos Oliveira",
-    images: ["UniLab/src/assets/images/unimarlab2.jpeg"],
+    images: ["/unimarlab2.jpeg"],
   },
   {
     id: 4,
@@ -65,7 +65,7 @@ export const laboratories: Laboratory[] = [
     ],
     schedule: "Segunda a Sexta: 8h às 18h",
     responsible: "Prof. Dra. Ana Costa",
-    images: ["/microscopy-lab.jpg"],
+    images: ["/unimarlab3.jpg"],
   },
   {
     id: 5,
@@ -83,26 +83,9 @@ export const laboratories: Laboratory[] = [
     ],
     schedule: "Segunda a Sexta: 7h às 21h",
     responsible: "Prof. Dr. Roberto Lima",
-    images: ["/electronics-lab.jpg"],
+    images: ["/unimarlab4.jpeg"],
   },
-  {
-    id: 6,
-    name: "Laboratório de Impressão 3D",
-    icon: Printer,
-    location: "Bloco F - Sala 501",
-    status: "open",
-    course: "Engenharia",
-    type: "Prototipagem",
-    description: "Laboratório de prototipagem rápida com impressoras 3D de alta precisão.",
-    equipment: [
-      { name: "Impressoras 3D FDM", icon: Printer, quantity: 8 },
-      { name: "Impressoras 3D SLA", icon: Printer, quantity: 3 },
-      { name: "Scanners 3D", icon: Camera, quantity: 2 },
-    ],
-    schedule: "Segunda a Sábado: 9h às 17h",
-    responsible: "Prof. Dr. Pedro Alves",
-    images: ["/3d-printing-lab.jpg"],
-  },
+  
 ]
 
 export const specialResources: SpecialResource[] = [
