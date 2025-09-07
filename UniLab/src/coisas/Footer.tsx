@@ -85,7 +85,7 @@ export default function Footer() {
 
         <div className="border-t border-white/20 mt-8 pt-6 text-center">
           <p className="text-white/80">
-            © 2024 Universidade de Marília - UNIMAR. Todos os direitos reservados.
+            2025 Universidade de Marília - UNIMAR.
           </p>
         </div>
       </div>

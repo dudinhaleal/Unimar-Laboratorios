@@ -33,7 +33,7 @@ export default function BookingModal() {
         <DialogHeader>
           <DialogTitle>Agendar Visita ao Laboratório</DialogTitle>
           <DialogDescription>
-            Preencha os dados para solicitar uma visita aos laboratórios
+            Preencha os dados para poder usar o laboratório no dia agendado
           </DialogDescription>
         </DialogHeader>
 
