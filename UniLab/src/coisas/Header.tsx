@@ -45,7 +45,7 @@ export default function Header() {
     <nav className="unimar-gradient shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* logo */}
           <div className="flex items-center">
             <img 
               src="/unimar-logo.png" 
@@ -54,7 +54,7 @@ export default function Header() {
             />
           </div>
 
-          {/* Desktop Navigation */}
+          {/* navegacao pra desktop */}
           <div className="hidden md:flex items-center space-x-8">
             {navigationItems.map((item) => {
               const IconComponent = item.icon
@@ -71,7 +71,7 @@ export default function Header() {
             })}
           </div>
 
-          {/* Desktop Action Buttons */}
+          {/* botoes pra desktop */}
           <div className="hidden md:flex items-center space-x-2">
             <Button
               variant="ghost"
@@ -130,7 +130,7 @@ export default function Header() {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* botao do menu pra celular */}
           <div className="md:hidden">
             <Button
               variant="ghost"
@@ -143,7 +143,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* menu pra celular */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-white/10 backdrop-blur-sm border-t border-white/20">
             <div className="px-2 pt-2 pb-3 space-y-1">
