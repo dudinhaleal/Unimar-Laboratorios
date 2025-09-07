@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { MapPin, Clock, Calendar } from 'lucide-react'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardContent } from '@/coisas/ui/card'
 
 export default function MapSection() {
   useEffect(() => {

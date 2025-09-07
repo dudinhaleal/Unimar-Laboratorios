@@ -1,11 +1,11 @@
 import { MapPin, Heart, Star } from 'lucide-react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/coisas/ui/card'
+import { Badge } from '@/coisas/ui/badge'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/coisas/ui/dialog'
 import { useLaboratories } from '@/hooks/useLaboratories'
 import { useFavorites } from '@/hooks/useFavorites'
 import { useReviews } from '@/hooks/useReviews'
-import LaboratoryDetails from '@/components/LaboratoryDetails'
+import LaboratoryDetails from '@/coisas/LaboratoryDetails'
 
 export default function LaboratoriesSection() {
   const { laboratories } = useLaboratories()

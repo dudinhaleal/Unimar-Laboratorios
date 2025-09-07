@@ -1,6 +1,6 @@
 import { Clock, User } from 'lucide-react'
 import { Laboratory } from '@/types'
-import ReviewSection from '@/components/ReviewSection'
+import ReviewSection from '@/coisas/ReviewSection'
 
 interface LaboratoryDetailsProps {
   laboratory: Laboratory

@@ -14,10 +14,10 @@ import {
   Moon,
   Sun
 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/coisas/ui/button'
 import { useBooking } from '@/hooks/useBooking'
 import { useFavorites } from '@/hooks/useFavorites'
-import { useTheme } from '@/components/theme-provider'
+import { useTheme } from '@/coisas/theme-provider'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

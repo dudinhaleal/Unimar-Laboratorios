@@ -1,11 +1,11 @@
-import HeroSection from '@/components/sections/HeroSection'
-import SearchSection from '@/components/sections/SearchSection'
-import LaboratoriesSection from '@/components/sections/LaboratoriesSection'
-import FavoritesSection from '@/components/sections/FavoritesSection'
-import ResourcesSection from '@/components/sections/ResourcesSection'
-import MapSection from '@/components/sections/MapSection'
-import StatisticsPanel from '@/components/StatisticsPanel'
-import BookingModal from '@/components/BookingModal'
+import HeroSection from '@/coisas/sections/HeroSection'
+import SearchSection from '@/coisas/sections/SearchSection'
+import LaboratoriesSection from '@/coisas/sections/LaboratoriesSection'
+import FavoritesSection from '@/coisas/sections/FavoritesSection'
+import ResourcesSection from '@/coisas/sections/ResourcesSection'
+import MapSection from '@/coisas/sections/MapSection'
+import StatisticsPanel from '@/coisas/StatisticsPanel'
+import BookingModal from '@/coisas/BookingModal'
 
 export default function HomePage() {
   return (

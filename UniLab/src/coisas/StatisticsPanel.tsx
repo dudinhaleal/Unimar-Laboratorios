@@ -1,5 +1,6 @@
+import React from 'react'
 import { BarChart3, Clock, Star, TrendingUp } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/coisas/ui/card'
 import { useLaboratories } from '@/hooks/useLaboratories'
 import { useReviews } from '@/hooks/useReviews'
 import { useFavorites } from '@/hooks/useFavorites'
@@ -104,7 +105,7 @@ export default function StatisticsPanel() {
           <CardContent>
             <div className="flex items-center gap-4">
               <div className="p-3 bg-primary/10 rounded-lg">
-                <mostPopularLab.icon className="h-8 w-8 text-primary" />
+                {React.createElement(mostPopularLab.icon, { className: "h-8 w-8 text-primary" })}
               </div>
               <div>
                 <h3 className="font-semibold">{mostPopularLab.name}</h3>

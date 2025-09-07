@@ -1,5 +1,5 @@
 import { Search, Calendar, Beaker } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/coisas/ui/button'
 import { useBooking } from '@/hooks/useBooking'
 
 export default function HeroSection() {

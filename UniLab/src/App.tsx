@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { ThemeProvider } from '@/components/theme-provider'
+import { ThemeProvider } from '@/coisas/theme-provider'
 import Layout from '@/layouts/Layout'
 import HomePage from '@/pages/HomePage'
-import NotificationCenter from '@/components/NotificationCenter'
+import NotificationCenter from '@/coisas/NotificationCenter'
 
 function App() {
   return (

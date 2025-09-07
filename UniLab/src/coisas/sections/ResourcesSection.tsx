@@ -1,4 +1,4 @@
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardContent } from '@/coisas/ui/card'
 import { specialResources } from '@/data/laboratories'
 
 export default function ResourcesSection() {

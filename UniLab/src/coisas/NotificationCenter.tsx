@@ -1,5 +1,5 @@
 import { X, CheckCircle, XCircle, Info, AlertTriangle } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/coisas/ui/button'
 import { useNotifications } from '@/hooks/useNotifications'
 
 export default function NotificationCenter() {

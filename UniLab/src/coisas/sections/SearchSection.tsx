@@ -1,18 +1,18 @@
 import { Search, Calendar, Filter } from 'lucide-react'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Input } from '@/coisas/ui/input'
+import { Button } from '@/coisas/ui/button'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/coisas/ui/select'
 import { useLaboratories } from '@/hooks/useLaboratories'
 import { useBooking } from '@/hooks/useBooking'
 import { useNotifications } from '@/hooks/useNotifications'
 import { useState } from 'react'
-import AdvancedFilters from '@/components/AdvancedFilters'
-import { AdvancedFilters as AdvancedFiltersType } from '@/components/AdvancedFilters'
+import AdvancedFilters from '@/coisas/AdvancedFilters'
+import { AdvancedFilters as AdvancedFiltersType } from '@/coisas/AdvancedFilters'
 
 export default function SearchSection() {
   const { filters, courses, types, updateFilters } = useLaboratories()
   const { openBookingForm } = useBooking()
-  const { } = useNotifications()
+  const { showSuccess } = useNotifications()
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false)
   const [advancedFilters, setAdvancedFilters] = useState<AdvancedFiltersType>({
     timeSlots: [],
