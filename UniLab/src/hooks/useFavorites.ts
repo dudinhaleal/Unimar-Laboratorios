@@ -5,7 +5,7 @@ const FAVORITES_KEY = 'unimar-favorites'
 export function useFavorites() {
   const [favorites, setFavorites] = useState<number[]>([])
 
-  // Carregar favoritos do localStorage
+  // carregar favoritos do localStorage
   useEffect(() => {
     const savedFavorites = localStorage.getItem(FAVORITES_KEY)
     if (savedFavorites) {
@@ -17,7 +17,7 @@ export function useFavorites() {
     }
   }, [])
 
-  // Salvar favoritos no localStorage
+  // salvar favoritos no localStorage
   useEffect(() => {
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites))
   }, [favorites])

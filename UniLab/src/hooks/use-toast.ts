@@ -1,12 +1,12 @@
 "use client"
 
-// Inspired by react-hot-toast library
+// inspirado pela biblioteca react-hot-toast
 import * as React from "react"
 
 import type {
   ToastActionElement,
   ToastProps,
-} from "@/components/ui/toast"
+} from "@/coisas/ui/toast"
 
 const TOAST_LIMIT = 1
 const TOAST_REMOVE_DELAY = 1000000
@@ -93,8 +93,8 @@ export const reducer = (state: State, action: Action): State => {
     case "DISMISS_TOAST": {
       const { toastId } = action
 
-      // ! Side effects ! - This could be extracted into a dismissToast() action,
-      // but I'll keep it here for simplicity
+      // efetos colaterais podem ser extraídos para uma ação dismissToast(),
+      // mas vou manter aqui para simplicidade!!
       if (toastId) {
         addToRemoveQueue(toastId)
       } else {

@@ -21,7 +21,7 @@ export function useNotifications() {
     
     setNotifications(prev => [...prev, newNotification])
 
-    // Auto remove after duration
+    // auto remove após a duração
     if (notification.duration !== 0) {
       setTimeout(() => {
         removeNotification(newNotification.id)

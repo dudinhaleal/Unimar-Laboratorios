@@ -15,7 +15,7 @@ const REVIEWS_KEY = 'unimar-reviews'
 export function useReviews() {
   const [reviews, setReviews] = useState<Review[]>([])
 
-  // Carregar avaliações do localStorage
+  // carregar avaliações do localStorage
   useEffect(() => {
     const savedReviews = localStorage.getItem(REVIEWS_KEY)
     if (savedReviews) {
@@ -27,7 +27,7 @@ export function useReviews() {
     }
   }, [])
 
-  // Salvar avaliações no localStorage
+    // salvar avaliações no localStorage
   useEffect(() => {
     localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews))
   }, [reviews])
@@ -70,3 +70,4 @@ export function useReviews() {
     markHelpful
   }
 }
+  

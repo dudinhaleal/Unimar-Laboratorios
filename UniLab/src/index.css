@@ -68,7 +68,7 @@
   }
 }
 
-/* Custom Unimar styles */
+/* estilos customizados Unimar */
 .unimar-gradient {
   background: linear-gradient(135deg, #004aad 0%, #0084dc 100%);
 }
@@ -84,7 +84,7 @@
   background-clip: text;
 }
 
-/* Custom animations */
+/* animações customizadas */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -128,7 +128,7 @@
   animation: slideInRight 0.5s ease-out;
 }
 
-/* Hover effects */
+/* efeitos de hover */
 .hover-lift {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -138,14 +138,14 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Glass morphism effect */
+/* efeito de vidro */
 .glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Custom scrollbar */
+/* scrollbar customizado */
 ::-webkit-scrollbar {
   width: 8px;
 }
